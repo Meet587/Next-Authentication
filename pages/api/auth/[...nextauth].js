@@ -1,5 +1,6 @@
 import NextAuth from "next-auth/next";
 import GithubProvider from "next-auth/providers/github";
+import { MongoClient, MongoClientOptions } from "mongodb";
 
 export default NextAuth({
   providers: [
@@ -8,4 +9,10 @@ export default NextAuth({
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
+  session: {
+    strategy: "jwt",
+  },
+  jwt: {
+    secret: "cjhzxkjcvbzxcbcfkabd",
+  },
 });
